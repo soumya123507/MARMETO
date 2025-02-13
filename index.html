@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embrace Sideboard - Luxury Clothing</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: #f5f5f5;
+            padding: 2rem;
+        }
+
+        .product-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .product-image {
+            background: #f8f8f8;
+            border-radius: 10px;
+            height: 500px;
+            background-image: url('WhatsApp Image 2025-02-13 at 13.20.25_e673cbc5.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .product-info {
+            padding: 1rem;
+        }
+
+        .product-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .price-container {
+            margin-bottom: 2rem;
+        }
+
+        .original-price {
+            font-size: 1.5rem;
+            color: #999;
+            text-decoration: line-through;
+            margin-right: 1rem;
+        }
+
+        .discounted-price {
+            font-size: 2rem;
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        .discount-badge {
+            background: #2ecc71;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 0.5rem;
+        }
+
+        .option-section {
+            margin-bottom: 2rem;
+        }
+
+        .option-title {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        .color-options {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .color-swatch {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .color-swatch.active {
+            border-color: #333;
+        }
+
+        .size-options {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .size-button {
+            padding: 0.8rem 1.5rem;
+            border: 1px solid #ddd;
+            background: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .size-button.active {
+            background: #333;
+            color: white;
+            border-color: #333;
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .quantity-input {
+            padding: 0.8rem;
+            width: 100px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .add-to-cart {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 1.5rem 3rem;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s ease;
+        }
+
+        .add-to-cart:hover {
+            background: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="product-container">
+        <div class="product-image"></div>
+        
+        <div class="product-info">
+            <h1 class="product-title">Embrace Sideboard</h1>
+            
+            <div class="price-container">
+                <span class="original-price">$19,998</span>
+                <span class="discounted-price">$12,999</span>
+                <div class="discount-badge">35% OFF</div>
+            </div>
+
+            <div class="option-section">
+                <h3 class="option-title">Select Color</h3>
+                <div class="color-options">
+                    <div class="color-swatch" style="background: #e74c3c" data-color="red"></div>
+                    <div class="color-swatch" style="background: #3498db" data-color="blue"></div>
+                    <div class="color-swatch" style="background: #2ecc71" data-color="green"></div>
+                    <div class="color-swatch" style="background: #2c3e50" data-color="black"></div>
+                    <div class="color-swatch" style="background: #ecf0f1" data-color="white"></div>
+                </div>
+            </div>
+
+            <div class="option-section">
+                <h3 class="option-title">Select Size</h3>
+                <div class="size-options">
+                    <button class="size-button">S</button>
+                    <button class="size-button">M</button>
+                    <button class="size-button">L</button>
+                    <button class="size-button">XL</button>
+                    <button class="size-button">XXL</button>
+                </div>
+            </div>
+
+            <div class="option-section">
+                <h3 class="option-title">Quantity</h3>
+                <input type="number" class="quantity-input" value="1" min="1">
+            </div>
+
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+    </div>
+
+    <script>
+        // Add interactive functionality
+        const colorSwatches = document.querySelectorAll('.color-swatch');
+        const sizeButtons = document.querySelectorAll('.size-button');
+
+        colorSwatches.forEach(swatch => {
+            swatch.addEventListener('click', () => {
+                colorSwatches.forEach(s => s.classList.remove('active'));
+                swatch.classList.add('active');
+            });
+        });
+
+        sizeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                sizeButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
